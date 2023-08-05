@@ -19,3 +19,13 @@ docker run --rm -it \
         -DskipITs \
         -Dmaven.javadoc.skip=true \
         -Dmaven.artifact.threads=30
+
+
+# mvn package -B -V -e -X \
+#         -rf org.apache.livy:livy-python-api \
+#         -Pspark-3.0 \
+#         -Pthriftserver \
+#         -DskipTests \
+#         -DskipITs \
+#         -Dmaven.javadoc.skip=true \
+#         -Dmaven.artifact.threads=30
