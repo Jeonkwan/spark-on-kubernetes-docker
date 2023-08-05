@@ -9,6 +9,7 @@ docker run --rm -it \
     -v $(pwd)/incubator-livy:/incubator-livy \
     -v $(pwd)/m2_settings:/root/.m2 \
     -v $(pwd)/output:/output \
+    -w /incubator-livy \
     $IMAGE_LIVY_BUILDER \
     mvn package -B -V -e \
         -Pspark-3.0 \
