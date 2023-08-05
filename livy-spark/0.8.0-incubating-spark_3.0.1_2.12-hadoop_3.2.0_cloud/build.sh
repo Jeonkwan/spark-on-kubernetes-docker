@@ -10,9 +10,11 @@ no_cache="--no-cache"
 
 parent_dir_path=$(dirname ${dir_path})
 
-repo="$DOCKERHUB_REPO/${parent_dir_path##*/}"
+repo="jeonkwan/${parent_dir_path##*/}"
 tag="${dir_path##*/}"
 
-( cd ${dir_path}; docker build . ${no_cache} -t "${repo}:${tag}" )
+( cd ${dir_path}; docker build . -t "${repo}:${tag}" )
 docker push "${repo}:${tag}"
 echo "Done! Enjoy..."
+
+

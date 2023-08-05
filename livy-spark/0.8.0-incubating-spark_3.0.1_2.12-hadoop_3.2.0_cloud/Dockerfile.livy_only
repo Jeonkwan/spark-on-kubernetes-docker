@@ -1,0 +1,20 @@
+ARG LIVY_BUILDER=jeonkwan/livy-builder:0.3
+
+### Livy Builder Container
+FROM $LIVY_BUILDER
+
+ARG LIVY_GITHUB_REPO=jahstreet/incubator-livy
+ARG LIVY_GITHUB_BRANCH=merge/first
+# ARG LIVY_GITHUB_BRANCH=v0.8.0/spark-3.0.0
+
+RUN git clone https://github.com/${LIVY_GITHUB_REPO}.git --branch ${LIVY_GITHUB_BRANCH} --single-branch --depth=50 && \
+    cd incubator-livy && \
+    mvn clean package -B -V -e \
+        -Pspark-3.0 \
+        -Pthriftserver \
+        -DskipTests \
+        -DskipITs \
+        -Dmaven.javadoc.skip=true && \
+    cp assembly/target/apache-livy-0.8.0-incubating-SNAPSHOT-bin.zip /
+
+
