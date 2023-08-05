@@ -10,12 +10,10 @@ docker run --rm -it \
     -v $(pwd)/m2_settings:/root/.m2 \
     -v $(pwd)/output:/output \
     $IMAGE_LIVY_BUILDER \
-    /bin/bash
-
-mvn package -B -V -e \
-    -Pspark-3.0 \
-    -Pthriftserver \
-    -DskipTests \
-    -DskipITs \
-    -Dmaven.javadoc.skip=true \
-    -Dmaven.artifact.threads=30
+    mvn package -B -V -e \
+        -Pspark-3.0 \
+        -Pthriftserver \
+        -DskipTests \
+        -DskipITs \
+        -Dmaven.javadoc.skip=true \
+        -Dmaven.artifact.threads=30
