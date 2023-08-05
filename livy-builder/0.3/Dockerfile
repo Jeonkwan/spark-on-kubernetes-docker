@@ -15,7 +15,7 @@ RUN echo "deb https://repo.scala-sbt.org/scalasbt/debian /" | tee /etc/apt/sourc
     apt-get update && \
     apt-get install -y sbt
 RUN apt-get install -y r-base
-RUN apt-get install -y python3 python3-pip python3-dev python-is-python3 && \
+RUN apt-get install -y python3 python3-pip python3-dev python-is-python3 python2-dev && \
     # We remove ensurepip since it adds no functionality since pip is
     #installed on the image and it just takes up 1.6MB on the image
     # rm -r /usr/lib/python*/ensurepip && \
